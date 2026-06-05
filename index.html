@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujima Agent Pride | SACCO Loan Ecosystem</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #0B2B4B;
+            --primary-gold: #C6A43F;
+            --primary-gold-light: #D4B15C;
+            --secondary-gray: #F4F6F9;
+            --text-dark: #1E2A3A;
+            --text-muted: #6C757D;
+            --success-green: #2E7D32;
+            --warning-orange: #E65100;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--secondary-gray);
+            color: var(--text-dark);
+        }
+
+        /* Professional Card Styling */
+        .card-professional {
+            background: white;
+            border-radius: 12px;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s ease;
+        }
+
+        .card-professional:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header Navy */
+        .header-navy {
+            background: var(--primary-navy);
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Gold Accents */
+        .gold-accent {
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .badge-gold {
+            background: var(--primary-gold);
+            color: var(--primary-navy);
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        /* Agent Card Headers */
+        .agent-scout {
+            background: linear-gradient(135deg, #1A4A6F 0%, #0B2B4B 100%);
+            padding: 1.25rem;
+            border-radius: 12px 12px 0 0;
+            color: white;
+        }
+
+        .agent-guardian {
+            background: linear-gradient(135deg, #2C5F2D 0%, #1B3B1C 100%);
+            padding: 1.25rem;
+            border-radius: 12px 12px 0 0;
+            color: white;
+        }
+
+        .agent-hunter {
+            background: linear-gradient(135deg, #8B6914 0%, #5C4508 100%);
+            padding: 1.25rem;
+            border-radius: 12px 12px 0 0;
+            color: white;
+        }
+
+        /* Stats Cards */
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            border-top: 3px solid var(--primary-gold);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+        }
+
+        /* Form Elements */
+        .form-label {
+            font-weight: 500;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .form-control, .form-select {
+            border-radius: 8px;
+            border: 1px solid #E0E4E8;
+            padding: 0.625rem 0.875rem;
+            font-size: 0.875rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 0 3px rgba(198, 164, 63, 0.1);
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-navy);
+            border: none;
+            padding: 0.625rem 1.5rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary-custom:hover {
+            background: #0A2340;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline-custom {
+            background: white;
+            border: 1px solid #E0E4E8;
+            padding: 0.5rem 1rem;
+            font-size: 0.813rem;
+            border-radius: 8px;
+            color: var(--text-dark);
+            transition: all 0.2s;
+            width: 100%;
+        }
+
+        .btn-outline-custom:hover {
+            border-color: var(--primary-gold);
+            background: #FFFDF5;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            padding: 0.875rem;
+            border-left: 3px solid var(--primary-gold);
+            background: #FAFCFE;
+            margin-bottom: 0.75rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.813rem;
+        }
+
+        /* Handoff Alert */
+        .handoff-alert {
+            background: #F8F9FA;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin: 0.75rem 0;
+            font-size: 0.75rem;
+            border-left: 3px solid var(--primary-gold);
+        }
+
+        /* Safety Rail */
+        .safety-rail {
+            background: #F8F9FA;
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            color: #E0E4E8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-4">
+    <!-- Header -->
+    <div class="header-navy d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="h3 mb-1 fw-semibold">
+                <i class="bi bi-shield-lock-fill me-2"></i>Ujima Agent Pride
+            </h1>
+            <p class="mb-0 opacity-75 small">RANK-Calibrated Agents | TRAIL Memory | GUARD Safety Rails | PRIDE Loop</p>
+        </div>
+        <div>
+            <span class="badge-gold"><i class="bi bi-trophy-fill me-1"></i> PRIDE LEADER CERTIFIED</span>
+        </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number" id="approvalRate">0%</div>
+                <div class="small text-muted mt-1">Female Vendor Approval</div>
+                <i class="bi bi-graph-up text-success small"></i>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number" id="avgTime">0<span class="fs-6">s</span></div>
+                <div class="small text-muted mt-1">Avg Processing Time</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number" id="biasAlerts">0</div>
+                <div class="small text-muted mt-1">TRACK Bias Alerts</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-number" id="sovereignty">100%</div>
+                <div class="small text-muted mt-1">Data Sovereignty (AWS Africa)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Left Column - Application Form -->
+        <div class="col-lg-4">
+            <div class="card-professional p-4">
+                <h5 class="fw-semibold mb-3">
+                    <i class="bi bi-file-text-fill me-2" style="color: var(--primary-gold);"></i>New Loan Application
+                </h5>
+                <hr>
+                <div class="mb-3">
+                    <label class="form-label"><i class="bi bi-person me-1"></i>Full Name</label>
+                    <input type="text" id="applicantName" class="form-control" placeholder="e.g., Grace Wanjiku" value="Grace Wanjiku">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><i class="bi bi-briefcase me-1"></i>Occupation</label>
+                    <select id="occupation" class="form-select">
+                        <option value="market_vendor">Market Vendor (Matooke Trader)</option>
+                        <option value="formal_employee">Formal Employee</option>
+                        <option value="shea_trader">Shea Butter Trader</option>
+                        <option value="maize_farmer">Maize Farmer</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><i class="bi bi-cash-stack me-1"></i>Loan Amount (KES)</label>
+                    <input type="number" id="loanAmount" class="form-control" value="28000">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><i class="bi bi-geo-alt me-1"></i>County</label>
+                    <select id="county" class="form-select">
+                        <option value="Kakamega">Kakamega</option>
+                        <option value="Busia">Busia</option>
+                        <option value="Nairobi">Nairobi</option>
+                        <option value="Kisumu">Kisumu</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><i class="bi bi-people me-1"></i>Children Under 5</label>
+                    <select id="children" class="form-select">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3+</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label"><i class="bi bi-wallet2 me-1"></i>Monthly Income (KES)</label>
+                    <input type="number" id="income" class="form-control" value="35000">
+                </div>
+                <button class="btn btn-primary-custom w-100" onclick="submitApplication()">
+                    <i class="bi bi-send me-2"></i>Submit to Agent Pride
+                </button>
+            </div>
+
+            <!-- GUARD Safety Panel -->
+            <div class="card-professional p-3 mt-4">
+                <h6 class="fw-semibold mb-2"><i class="bi bi-shield-check me-1" style="color: var(--primary-gold);"></i>GUARD Safety Rails</h6>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="safety-rail"><i class="bi bi-check-circle-fill text-success small"></i> Gender proxy blocks</span>
+                    <span class="safety-rail"><i class="bi bi-check-circle-fill text-success small"></i> Max 3 SMS/day</span>
+                    <span class="safety-rail"><i class="bi bi-check-circle-fill text-success small"></i> Dignity Filter</span>
+                    <span class="safety-rail"><i class="bi bi-check-circle-fill text-success small"></i> Red Team tested</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Agent Grid -->
+        <div class="col-lg-8">
+            <!-- Scout Agent -->
+            <div class="card-professional mb-4 overflow-hidden">
+                <div class="agent-scout">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small text-white-50">🔭 RANK: EDUCATOR</div>
+                            <h5 class="mb-0 fw-semibold">Scout Agent</h5>
+                        </div>
+                        <span class="badge bg-white text-dark bg-opacity-20 small rounded-pill px-3">Max 3 SMS/day | No loan recs</span>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="handoff-alert" id="scoutStatus">
+                        <i class="bi bi-hourglass-split me-1"></i> Awaiting member inquiry...
+                    </div>
+                    <button class="btn-outline-custom" onclick="simulateScoutInquiry()">
+                        <i class="bi bi-chat-dots me-1"></i> Simulate Member SMS
+                    </button>
+                </div>
+            </div>
+
+            <!-- Guardian Agent -->
+            <div class="card-professional mb-4 overflow-hidden">
+                <div class="agent-guardian">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small text-white-50">🛡️ RANK: TRIAGE</div>
+                            <h5 class="mb-0 fw-semibold">Guardian Agent</h5>
+                        </div>
+                        <span class="badge bg-white text-dark bg-opacity-20 small rounded-pill px-3">Approve ≤KES 15K | Escalate >15K</span>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="handoff-alert" id="guardianStatus">
+                        <i class="bi bi-hourglass-split me-1"></i> No active applications
+                    </div>
+                    <button class="btn-outline-custom" onclick="simulateGuardianCheck()">
+                        <i class="bi bi-bar-chart-steps me-1"></i> Run TRACK Bias Audit
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hunter Agent -->
+            <div class="card-professional mb-4 overflow-hidden">
+                <div class="agent-hunter">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small text-white-50">🏹 RANK: COORDINATOR</div>
+                            <h5 class="mb-0 fw-semibold">Hunter Agent</h5>
+                        </div>
+                        <span class="badge bg-white text-dark bg-opacity-20 small rounded-pill px-3">NEVER approve/deny | Prep briefings</span>
+                    </div>
+                </div>
+                <div class="p-3">
+                    <div class="handoff-alert" id="hunterStatus">
+                        <i class="bi bi-hourglass-split me-1"></i> Awaiting Guardian handoff
+                    </div>
+                    <button class="btn-outline-custom" onclick="simulateHunterBriefing()">
+                        <i class="bi bi-file-earmark-text me-1"></i> Generate Sample Briefing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIDE Loop Timeline -->
+    <div class="card-professional p-4 mt-4">
+        <h5 class="fw-semibold mb-3">
+            <i class="bi bi-arrow-repeat me-2" style="color: var(--primary-gold);"></i>PRIDE Loop - Human-in-the-Loop Audit Trail
+            <span class="badge-gold ms-2 float-end">ETHOS | OASIS | HORIZON</span>
+        </h5>
+        <div id="timelineContainer" style="max-height: 300px; overflow-y: auto;">
+            <div class="timeline-item"><i class="bi bi-check-circle-fill text-success me-2 small"></i> Pride Leader: System initialized with RANK constraints</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // State
+    let applicationCount = 0;
+    let femaleApprovals = 0;
+    let biasAlertCount = 0;
+    let processingTime = 0;
+    let timelineEntries = [];
+
+    function addTimeline(message, type = 'info') {
+        const timestamp = new Date().toLocaleTimeString('en-KE');
+        timelineEntries.unshift({ message, timestamp, type });
+        if (timelineEntries.length > 20) timelineEntries.pop();
+        renderTimeline();
+    }
+
+    function renderTimeline() {
+        const container = document.getElementById('timelineContainer');
+        container.innerHTML = timelineEntries.map(entry => `
+            <div class="timeline-item">
+                <span class="text-muted small">[${entry.timestamp}]</span> ${entry.message}
+            </div>
+        `).join('');
+    }
+
+    function updateStats() {
+        const rate = applicationCount > 0 ? (femaleApprovals / applicationCount * 100).toFixed(0) : 0;
+        document.getElementById('approvalRate').innerText = `${rate}%`;
+        document.getElementById('avgTime').innerHTML = `${processingTime}<span class="fs-6">s</span>`;
+        document.getElementById('biasAlerts').innerText = biasAlertCount;
+    }
+
+    // TRACK Audit
+    function trackAudit(occupation, county, gender = 'female') {
+        let biasFlags = [];
+        
+        if (occupation === 'market_vendor' || occupation === 'shea_trader') {
+            biasFlags.push('Training data under-represents informal traders');
+            biasAlertCount++;
+        }
+        
+        if (occupation === 'market_vendor' && gender === 'female') {
+            biasFlags.push('Historical: 68% denial rate for market vendors');
+            biasAlertCount++;
+        }
+        
+        if (county === 'Busia') {
+            biasFlags.push('KILL SWITCH: Busia County → mandatory human review');
+            addTimeline(`🔴 TRACK Kill Switch: Busia County requires human review`);
+            return { requiresHumanReview: true, biasFlags };
+        }
+        
+        addTimeline(`🔄 Counterfactual: Same cash flow as formal employee → +35% approval probability`);
+        return { requiresHumanReview: false, biasFlags };
+    }
+
+    // Scout Agent
+    async function simulateScoutInquiry() {
+        addTimeline('🔭 Scout Agent: Received SMS inquiry about school fees');
+        document.getElementById('scoutStatus').innerHTML = '<i class="bi bi-hourglass-split me-1"></i> Processing: "No money for school fees"<br><span class="text-muted small">🔄 Checking harvest calendar...</span>';
+        
+        await new Promise(r => setTimeout(r, 800));
+        
+        const response = `Habari! Next matooke harvest: Sep/Oct. Your income typically spikes then. Options: 1) Chama savings (KES 200/day), 2) Ujima buffer loan (max KES 15K), 3) Talk to Guardian Agent. Tuma *#700# to pause.`;
+        
+        document.getElementById('scoutStatus').innerHTML = `<i class="bi bi-chat-dots me-1"></i> Scout: "${response.substring(0, 80)}..."<br><span class="text-success small">→ Handoff: Financial stress signal detected. Passing to Guardian.</span>`;
+        addTimeline(`🔭 Scout → Guardian: Financial stress signal (school fees)`);
+        
+        setTimeout(() => {
+            document.getElementById('guardianStatus').innerHTML = '<i class="bi bi-arrow-repeat me-1"></i> Guardian: Received handoff. Assessing application...';
+        }, 500);
+    }
+
+    // Main Application
+    async function submitApplication() {
+        const startTime = Date.now();
+        const name = document.getElementById('applicantName').value;
+        const occupation = document.getElementById('occupation').value;
+        const loanAmount = parseInt(document.getElementById('loanAmount').value);
+        const county = document.getElementById('county').value;
+        const children = parseInt(document.getElementById('children').value);
+        const income = parseInt(document.getElementById('income').value);
+        
+        const isFemale = name.includes('Wanjiku') || name.includes('Grace') || name.includes('Mary');
+        const isInformal = occupation === 'market_vendor' || occupation === 'shea_trader';
+        
+        applicationCount++;
+        addTimeline(`🦁 New application: ${name}, ${occupation}, KES ${loanAmount.toLocaleString()}, ${county}`);
+        
+        await new Promise(r => setTimeout(r, 400));
+        
+        const audit = trackAudit(occupation, county, isFemale ? 'female' : 'male');
+        
+        await new Promise(r => setTimeout(r, 600));
+        
+        let decision = '';
+        let requiresHumanReview = audit.requiresHumanReview;
+        let riskScore = 0;
+        
+        if (isInformal) riskScore += 15;
+        if (income < 20000) riskScore += 20;
+        if (children >= 2) riskScore += 10;
+        if (loanAmount > income * 1.5) riskScore += 15;
+        if (county === 'Busia') riskScore += 5;
+        
+        if (loanAmount <= 15000 && riskScore < 40 && !audit.requiresHumanReview) {
+            decision = '✅ APPROVED (Guardian Agent - Tier 1)';
+            if (isFemale && isInformal) femaleApprovals++;
+            addTimeline(`✅ Guardian Agent: Approved KES ${loanAmount} (risk: ${riskScore})`);
+        } else if (loanAmount > 50000 || children >= 2 || audit.requiresHumanReview) {
+            decision = '⏸️ PAUSE POINT: Human review required';
+            addTimeline(`⏸️ PRIDE Loop Pause: ${loanAmount > 50000 ? 'Amount >50K' : children >= 2 ? `${children} children under 5` : 'Busia flag'}`);
+        } else {
+            decision = '🔄 ESCALATED to Hunter Agent';
+            addTimeline(`🏹 Guardian → Hunter: Escalated (risk: ${riskScore})`);
+            
+            document.getElementById('hunterStatus').innerHTML = '<i class="bi bi-hourglass-split me-1"></i> Hunter: Preparing officer briefing...';
+            await new Promise(r => setTimeout(r, 500));
+            
+            document.getElementById('hunterStatus').innerHTML = `
+                <i class="bi bi-file-text me-1"></i> <strong>Briefing for ${county} Officer:</strong><br>
+                ${name} | ${occupation}<br>
+                Income: KES ${income.toLocaleString()} | Harvest: ${occupation.includes('vendor') ? 'Matooke (Sep/Oct)' : 'Maize (Feb/Mar)'}<br>
+                Children: ${children} | Request: KES ${loanAmount.toLocaleString()}<br>
+                <span class="text-success small">→ Cross-sell drought insurance (KES 500/month)</span>
+            `;
+        }
+        
+        processingTime = ((Date.now() - startTime) / 1000).toFixed(1);
+        
+        document.getElementById('guardianStatus').innerHTML = `
+            <strong>${decision}</strong><br>
+            ${audit.biasFlags.length > 0 ? `<span class="text-muted small">⚠️ ${audit.biasFlags.join(' | ')}</span><br>` : ''}
+            <span class="text-muted small">Risk: ${riskScore}/100 | Time: ${processingTime}s</span>
+        `;
+        
+        updateStats();
+    }
+    
+    function simulateGuardianCheck() {
+        addTimeline(`⚖️ TRACK Audit: Representation gap - Informal traders = 12% of training data vs 68% applicants`);
+        addTimeline(`🔴 Amplification: 3.2x denial rate for women vendors vs formal employees`);
+        biasAlertCount += 2;
+        updateStats();
+        document.getElementById('guardianStatus').innerHTML = '<span class="text-warning">⚠️ TRACK Audit: 2 bias vectors identified. Review recommended.</span>';
+    }
+    
+    function simulateHunterBriefing() {
+        document.getElementById('hunterStatus').innerHTML = `
+            <i class="bi bi-file-text me-1"></i> <strong>Briefing for Kakamega Officer Sarah:</strong><br>
+            Beatrice, 38, Maize farmer<br>
+            Income: KES 32,000 | Harvest peaks: Feb/Mar, Aug/Sep<br>
+            Children: 3 (ages 6,9,14) | Request: KES 28,000 school fees<br>
+            <span class="text-success small">✅ Approve with harvest-aligned repayment</span>
+        `;
+        addTimeline(`🏹 Hunter Agent: Sample briefing prepared`);
+    }
+    
+    updateStats();
+    addTimeline('🦁 Ujima Agent Pride initialized. ETHOS/TRACK/OASIS/PRIDE/HORIZON active.');
+    addTimeline('🌍 Data sovereignty: AWS Africa (Cape Town) per Kenya DPA 2022');
+</script>
+</body>
+</html>
